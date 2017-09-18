@@ -99,10 +99,42 @@ public class TwoWidgets extends Application {
         public void write(int b) throws IOException {
             appendText(String.valueOf((char)b));
         }
+
+    }
+
+    // METHOD TO CHECK IF USER INPUT VALUE IS A PRIME NUMBER
+    public static boolean isPrime(int inputNumberInt, TextArea output) {
+
+        // TEST IF THE NUMBER IS EVEN
+        if(inputNumberInt > 2 && (inputNumberInt & 1) == 0) {
+            System.out.println(inputNumberInt + " is NOT PRIME printed successfully!");
+            output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+            return false;
+        }
+
+        // TEST IF PRIME
+        for(int i = 3; i * i <= inputNumberInt; i += 2) {
+
+            if (inputNumberInt % i == 0) {
+
+                System.out.println("Number is not % to i");
+                return false;
+
+            }
+
+            System.out.println(inputNumberInt + " is PRIME printed successfully!");
+            output.appendText("\n" + inputNumberInt + " is PRIME!");
+            return true;
+        }
+
+        System.out.println(inputNumberInt + " is NOT PRIME printed successfully!");
+        output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+        return false;
     }
 
     // METHOD TO CHECK IF A NUMBER IS PRIME OR NOT, EVEN, OR ODD
     public static boolean checkEvenOrPrime(TextField inputNumber, ComboBox<String> options, TextArea output) {
+
         // CONVERTS INPUT FROM STRING TO INTEGER
         int inputNumberInt = Integer.parseInt(inputNumber.getText());
 
@@ -130,38 +162,40 @@ public class TwoWidgets extends Application {
 
             System.out.println("Prime test");
 
-            // TEST 1
-            if (inputNumberInt < 1) {
+            isPrime(inputNumberInt, output);
 
-                System.out.println(inputNumberInt + " is NOT PRIME printed successfully.");
-                output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
-                return false;
-
-            }
-
-            // TEST 2
-            if (inputNumberInt < 3) {
-
-                System.out.println(inputNumberInt + " is PRIME printed successfully.");
-                output.appendText("\n" + inputNumberInt + " is PRIME!");
-                return true;
-
-            }
-
-            // TEST 3
-            for (int i = 2; i <= Math.round(Math.sqrt(inputNumberInt)); i++) {
-
-                System.out.println("test ");
-
-                if (i % inputNumberInt == 0) {
-
-                    System.out.println(inputNumberInt + " is NOT PRIME printed succesfully.");
-                    output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
-                    return false;
-
-                }
-
-            }
+//            // TEST 1
+//            if (inputNumberInt < 1) {
+//
+//                System.out.println(inputNumberInt + " is NOT PRIME printed successfully.");
+//                output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+//                return false;
+//
+//            }
+//
+//            // TEST 2
+//            if (inputNumberInt < 3) {
+//
+//                System.out.println(inputNumberInt + " is PRIME printed successfully.");
+//                output.appendText("\n" + inputNumberInt + " is PRIME!");
+//                return true;
+//
+//            }
+//
+//            // TEST 3
+//            for (int i = 2; i <= Math.round(Math.sqrt(inputNumberInt)); i++) {
+//
+//                System.out.println("test " + i);
+//
+//                if (i % inputNumberInt == 0) {
+//
+//                    System.out.println(inputNumberInt + " is NOT PRIME printed succesfully.");
+//                    output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+//                    return false;
+//
+//                }
+//
+//            }
 
         } else if(options.getValue() == null){
 
@@ -175,8 +209,6 @@ public class TwoWidgets extends Application {
     @Override
     // Stages are analagous to windows - pair/similar
     public void start(Stage primaryStage) {
-
-        //NumberInformationWidget niw = new NumberInformationWidget();
 
         primaryStage.setTitle("Homework 2 : Number Information Widget");
 
@@ -209,7 +241,6 @@ public class TwoWidgets extends Application {
         options.getItems().addAll("Even", "Prime");
         root.add(options, 2,0 );
         options.getSelectionModel().selectFirst();
-
 
         // SINGLE READ-ONLY TEXT AREA
         TextArea output = new TextArea();
