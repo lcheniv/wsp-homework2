@@ -188,7 +188,7 @@ public class TwoWidgets extends Application {
 
         // CREATING REGIONS TO CREATE SPACING AND SEPERATIONS
         root.add(r, 1, 0);
-        //root.setHgrow(r, Priority.ALWAYS);
+        root.setHgrow(r, Priority.ALWAYS);
 
         // TO ALLOW USER TO ENTER SINGLE-LINE INPUT
         TextField inputNumber = new TextField("Type a number here . . .");
@@ -208,43 +208,24 @@ public class TwoWidgets extends Application {
         ComboBox<String> options = new ComboBox<String>();
         options.getItems().addAll("Even", "Prime");
         root.add(options, 2,0 );
+        options.getSelectionModel().selectFirst();
+
 
         // SINGLE READ-ONLY TEXT AREA
-//        TextArea output = new TextArea();
+        TextArea output = new TextArea();
         root.add(output, 0, 1);
         output.setEditable(false);
         output.setWrapText(true);
         output.setPrefColumnCount(38);
 
-
-        // HBOX CONTAINER FOR SCALABILITY
-        HBox textFieldBox = new HBox(inputNumber);
-        textFieldBox.setAlignment(Pos.BASELINE_LEFT);
-        textFieldBox.setPadding(new Insets(20, 140,0,20 ));
-
-        // TEXT AREA BOX POSITION
-        HBox textAreaBox = new HBox(output);
-        textAreaBox.setAlignment(Pos.BOTTOM_LEFT);
-        textAreaBox.setPadding(new Insets(20,0,30,20));
-
-        // ATTEMPTED TO CREATE A HBOX LEFT FOR TEXTFIELD AND TEXTAREA
-//        HBox hBoxLeft = new HBox();
-//        hBoxLeft.setSpacing(10);
-//        hBoxLeft.setPadding(new Insets(10));
-//        hBoxLeft.getChildren().addAll(inputNumber, output);
-
-        // COMBO BOX POSITION
-        HBox comboBox = new HBox(options);
-        comboBox.setAlignment(Pos.TOP_RIGHT);
-        comboBox.setPadding(new Insets(0,0,0,0));
-
         //Resolving the size - responsiveness - horizontal growth (requires an import library)
-        HBox.setHgrow(textAreaBox, Priority.ALWAYS);
+        HBox.setHgrow(output, Priority.ALWAYS);
         HBox.setHgrow(inputNumber, Priority.ALWAYS);
 
         // RUN BUTTON ON ACTION
         Button checkNumber = new Button("Run");
         root.add(checkNumber, 3, 0);
+        checkNumber.setPrefWidth(70);
         checkNumber.setOnAction(
                 event -> {
 
@@ -255,18 +236,31 @@ public class TwoWidgets extends Application {
 
         );
 
-        // RUN BUTTON POSITION
-        HBox buttonBox = new HBox(checkNumber);
-        buttonBox.setAlignment(Pos.TOP_RIGHT);
-        buttonBox.setPadding(new Insets(0,20,0,0));
+        // ATTEMPTED TO CREATE A HBOX LEFT FOR TEXTFIELD AND TEXTAREA
+        HBox hBoxRight = new HBox();
+        hBoxRight.setSpacing(10);
+        hBoxRight.setPadding(new Insets(10));
+        hBoxRight.getChildren().addAll(inputNumber, options, checkNumber);
+
+        HBox hBoxLeft = new HBox();
+        hBoxLeft.setSpacing(10);
+        hBoxLeft.setPadding(new Insets(10));
+        hBoxLeft.getChildren().addAll(output);
+
+//        // RUN BUTTON POSITION
+//        HBox buttonBox = new HBox(checkNumber);
+//        buttonBox.setAlignment(Pos.TOP_RIGHT);
+//        buttonBox.setPadding(new Insets(0,20,0,10));
 
         BorderPane pane = new BorderPane();
-        pane.setTop(textFieldBox);
-        pane.setLeft(textAreaBox);
-        pane.setCenter(comboBox);
-        pane.setRight(buttonBox);
+        pane.setTop(hBoxRight);
+        pane.setCenter(hBoxLeft);
+        //pane.setLeft(hBoxLeft);
+        //pane.setRight(hBoxRight);
+        //pane.setCenter(comboBox);
+        //pane.setRight(buttonBox);
 
-        primaryStage.setScene(new Scene(pane, 700, 400));
+        primaryStage.setScene(new Scene(pane, 800, 400));
         primaryStage.show();
 
 
