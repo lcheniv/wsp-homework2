@@ -108,7 +108,7 @@ public class TwoWidgets extends Application {
         // TEST IF THE NUMBER IS EVEN
         if(inputNumberInt > 2 && (inputNumberInt & 1) == 0) {
             System.out.println(inputNumberInt + " is NOT PRIME printed successfully!");
-            output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+            output.appendText("\n" + inputNumberInt + " is not prime");
             return false;
         }
 
@@ -123,16 +123,17 @@ public class TwoWidgets extends Application {
             }
 
             System.out.println(inputNumberInt + " is PRIME printed successfully!");
-            output.appendText("\n" + inputNumberInt + " is PRIME!");
+            output.appendText("\n" + inputNumberInt + " is prime");
             return true;
         }
 
         System.out.println(inputNumberInt + " is NOT PRIME printed successfully!");
-        output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
+        output.appendText("\n" + inputNumberInt + " is not prime");
         return false;
     }
 
     // METHOD TO CHECK IF A NUMBER IS PRIME OR NOT, EVEN, OR ODD
+    // CREATED A SEPERATE PRIME METHOD TO CHECK IF PRIME
     public static boolean checkEvenOrPrime(TextField inputNumber, ComboBox<String> options, TextArea output) {
 
         // CONVERTS INPUT FROM STRING TO INTEGER
@@ -146,13 +147,13 @@ public class TwoWidgets extends Application {
             if (inputNumberInt % 2 == 0) {
 
                 System.out.println(inputNumberInt + " is EVEN printed successfully!");
-                output.appendText("\n" + inputNumberInt + " is EVEN!");
+                output.appendText("\n" + inputNumberInt + " is even");
                 return true;
 
             } else {
 
                 System.out.println(inputNumberInt + " is ODD printed successfully!");
-                output.appendText("\n" + inputNumberInt + " is ODD!");
+                output.appendText("\n" + inputNumberInt + " is odd");
                 return false;
 
             }
@@ -248,6 +249,7 @@ public class TwoWidgets extends Application {
         output.setEditable(false);
         output.setWrapText(true);
         output.setPrefColumnCount(38);
+        output.appendText("CONSOLE LOG : ");
 
         //Resolving the size - responsiveness - horizontal growth (requires an import library)
         HBox.setHgrow(output, Priority.ALWAYS);
@@ -258,6 +260,7 @@ public class TwoWidgets extends Application {
         root.add(checkNumber, 3, 0);
         checkNumber.setPrefWidth(70);
         checkNumber.setOnAction(
+
                 event -> {
 
                     checkEvenOrPrime(inputNumber, options, output);
