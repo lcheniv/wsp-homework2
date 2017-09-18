@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f097161-dc2a-436c-bbe4-8c6dd0bc46ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/homework2/TwoWidgets.class" afterPath="$PROJECT_DIR$/out/production/homework2/TwoWidgets.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TwoWidgets.java" afterPath="$PROJECT_DIR$/src/TwoWidgets.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,10 +17,10 @@
       <file leaf-file-name="TwoWidgets.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TwoWidgets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="222" column="52" lean-forward="true" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+            <state relative-caret-position="323">
+              <caret line="103" column="29" lean-forward="false" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
               <folding>
-                <element signature="e#0#9241#0" expanded="true" />
+                <element signature="e#0#8910#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#3478#3479#0" expanded="true" />
                 <element signature="e#3545#3546#0" expanded="true" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="NumberInformationWidget.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NumberInformationWidget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="50" selection-end-column="3" />
+            <state relative-caret-position="774">
+              <caret line="111" column="26" lean-forward="true" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
               <folding>
                 <element signature="e#0#5124#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -78,7 +76,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -252,7 +250,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -324,7 +322,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="47" lean-forward="false" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
           <folding>
-            <element signature="e#0#9241#0" expanded="true" />
+            <element signature="e#0#8910#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#3478#3479#0" expanded="true" />
             <element signature="e#3545#3546#0" expanded="true" />
@@ -354,8 +352,8 @@
     <entry file="file://$PROJECT_DIR$/src/ComboWidget.java" />
     <entry file="file://$PROJECT_DIR$/src/NumberInformationWidget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="50" selection-end-column="3" />
+        <state relative-caret-position="774">
+          <caret line="111" column="26" lean-forward="true" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
           <folding>
             <element signature="e#0#5124#0" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -366,10 +364,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TwoWidgets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="222" column="52" lean-forward="true" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+        <state relative-caret-position="323">
+          <caret line="103" column="29" lean-forward="false" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
           <folding>
-            <element signature="e#0#9241#0" expanded="true" />
+            <element signature="e#0#8910#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#3478#3479#0" expanded="true" />
             <element signature="e#3545#3546#0" expanded="true" />

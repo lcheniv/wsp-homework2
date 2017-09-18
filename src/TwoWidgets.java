@@ -131,7 +131,7 @@ public class TwoWidgets extends Application {
             System.out.println("Prime test");
 
             // TEST 1
-            if (inputNumberInt > 1) {
+            if (inputNumberInt < 1) {
 
                 System.out.println(inputNumberInt + " is NOT PRIME printed successfully.");
                 output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
@@ -140,7 +140,7 @@ public class TwoWidgets extends Application {
             }
 
             // TEST 2
-            if (inputNumberInt > 3) {
+            if (inputNumberInt < 3) {
 
                 System.out.println(inputNumberInt + " is PRIME printed successfully.");
                 output.appendText("\n" + inputNumberInt + " is PRIME!");
@@ -233,32 +233,22 @@ public class TwoWidgets extends Application {
 
                 }
 
-
         );
 
         // ATTEMPTED TO CREATE A HBOX LEFT FOR TEXTFIELD AND TEXTAREA
-        HBox hBoxRight = new HBox();
-        hBoxRight.setSpacing(10);
-        hBoxRight.setPadding(new Insets(10));
-        hBoxRight.getChildren().addAll(inputNumber, options, checkNumber);
+        HBox hBoxTop = new HBox();
+        hBoxTop.setSpacing(10);
+        hBoxTop.setPadding(new Insets(10));
+        hBoxTop.getChildren().addAll(inputNumber, options, checkNumber);
 
-        HBox hBoxLeft = new HBox();
-        hBoxLeft.setSpacing(10);
-        hBoxLeft.setPadding(new Insets(10));
-        hBoxLeft.getChildren().addAll(output);
-
-//        // RUN BUTTON POSITION
-//        HBox buttonBox = new HBox(checkNumber);
-//        buttonBox.setAlignment(Pos.TOP_RIGHT);
-//        buttonBox.setPadding(new Insets(0,20,0,10));
+        HBox hBoxBottom = new HBox();
+        hBoxBottom.setSpacing(10);
+        hBoxBottom.setPadding(new Insets(10));
+        hBoxBottom.getChildren().addAll(output);
 
         BorderPane pane = new BorderPane();
-        pane.setTop(hBoxRight);
-        pane.setCenter(hBoxLeft);
-        //pane.setLeft(hBoxLeft);
-        //pane.setRight(hBoxRight);
-        //pane.setCenter(comboBox);
-        //pane.setRight(buttonBox);
+        pane.setTop(hBoxTop);
+        pane.setCenter(hBoxBottom);
 
         primaryStage.setScene(new Scene(pane, 800, 400));
         primaryStage.show();
