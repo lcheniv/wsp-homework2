@@ -51,6 +51,8 @@
  */
 
 import com.sun.javafx.text.TextLine;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -61,6 +63,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+
 
 
 public class NumberInformationWidget extends GridPane {
@@ -69,30 +78,38 @@ public class NumberInformationWidget extends GridPane {
 
         //-----------------NUMBER INFORMATION WIDGET-------------------------------------------------------------------
 
-        // Blank widget, super class of all classes
+        // BLANK SPACE WIDGET - SUPER CLASS OF ALL CLASSES
         Region r = new Region();
 
         // CREATING REGIONS TO CREATE SPACING AND SEPERATIONS
-        add(r, 3, 0);
+        add(r, 1, 0);
+        setHgrow(r, Priority.ALWAYS);
 
-        // To allow user to enter single-line text entry
-        //TextLine inputNumber = new TextLine(0, 50, , 10, 2, 2, 0, 2);
+        // TO ALLOW USER TO ENTER SINGLE-LINE INPUT
         TextField inputNumber = new TextField("Type a number here . . .");
         add(inputNumber, 0,0);
 
         // COMBOX BOX w/ EVEN & PRIME
         ComboBox<String> options = new ComboBox<String>();
         options.getItems().addAll("Even", "Prime");
-        add(options, 1,0 );
+        add(options, 2,0 );
 
         // SINGLE READ-ONLY TEXT AREA
         TextArea output = new TextArea();
         add(output, 0, 1);
         output.setDisable(true);
 
+        // HBOX CONTAINER FOR SCALABILITY
+        HBox textFieldBox = new HBox(inputNumber);
+        textFieldBox.setAlignment(Pos.CENTER);
+        textFieldBox.setPadding(new Insets(10));
+
+        //Resolving the size - responsiveness - horizontal growth (requires an import library)
+        HBox.setHgrow(inputNumber, Priority.ALWAYS);
+
         // RUN BUTTON
         Button checkNumber = new Button("Run");
-        add(checkNumber, 2, 0);
+        add(checkNumber, 3, 0);
         checkNumber.setOnAction(
                 event -> {
 
@@ -115,16 +132,8 @@ public class NumberInformationWidget extends GridPane {
         );
 
 
-
-
-
-
-
-
-
-
-
-
+        BorderPane pane = new BorderPane();
+        pane.setCenter(textFieldBox);
 
     }
 
