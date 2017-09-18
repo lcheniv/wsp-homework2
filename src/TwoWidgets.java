@@ -51,6 +51,7 @@
  */
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -64,6 +65,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import javafx.util.converter.NumberStringConverter;
+import java.io.Console;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class TwoWidgets extends Application {
 
@@ -71,8 +78,31 @@ public class TwoWidgets extends Application {
         launch(args);
     }
 
+    private static PrintStream printStream;
+    TextArea output = new TextArea();
+
+    public void initialize() {
+        printStream = new PrintStream(new Console(output)) ;
+    }
+
+    public class Console extends OutputStream {
+        private TextArea console;
+
+        public Console(TextArea console) {
+            this.console = console;
+        }
+
+        public void appendText(String valueOf) {
+            Platform.runLater(() -> console.appendText(valueOf));
+        }
+
+        public void write(int b) throws IOException {
+            appendText(String.valueOf((char)b));
+        }
+    }
+
     // METHOD TO CHECK IF A NUMBER IS PRIME OR NOT, EVEN, OR ODD
-    public static boolean checkEvenOrPrime(TextField inputNumber, ComboBox<String> options) {
+    public static boolean checkEvenOrPrime(TextField inputNumber, ComboBox<String> options, TextArea output) {
         // CONVERTS INPUT FROM STRING TO INTEGER
         int inputNumberInt = Integer.parseInt(inputNumber.getText());
 
@@ -83,12 +113,14 @@ public class TwoWidgets extends Application {
 
             if (inputNumberInt % 2 == 0) {
 
-                System.out.println(inputNumberInt + " is EVEN!");
+                System.out.println(inputNumberInt + " is EVEN printed successfully!");
+                output.appendText("\n" + inputNumberInt + " is EVEN!");
                 return true;
 
             } else {
 
-                System.out.println(inputNumberInt + " is ODD!");
+                System.out.println(inputNumberInt + " is ODD printed successfully!");
+                output.appendText("\n" + inputNumberInt + " is ODD!");
                 return false;
 
             }
@@ -101,7 +133,8 @@ public class TwoWidgets extends Application {
             // TEST 1
             if (inputNumberInt > 1) {
 
-                System.out.println(inputNumberInt + " is NOT PRIME");
+                System.out.println(inputNumberInt + " is NOT PRIME printed successfully.");
+                output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
                 return false;
 
             }
@@ -109,7 +142,8 @@ public class TwoWidgets extends Application {
             // TEST 2
             if (inputNumberInt > 3) {
 
-                System.out.println(inputNumberInt + " is PRIME");
+                System.out.println(inputNumberInt + " is PRIME printed successfully.");
+                output.appendText("\n" + inputNumberInt + " is PRIME!");
                 return true;
 
             }
@@ -121,7 +155,8 @@ public class TwoWidgets extends Application {
 
                 if (i % inputNumberInt == 0) {
 
-                    System.out.println(inputNumberInt + " is NOT PRIME");
+                    System.out.println(inputNumberInt + " is NOT PRIME printed succesfully.");
+                    output.appendText("\n" + inputNumberInt + " is NOT PRIME!");
                     return false;
 
                 }
@@ -175,19 +210,30 @@ public class TwoWidgets extends Application {
         root.add(options, 2,0 );
 
         // SINGLE READ-ONLY TEXT AREA
-        TextArea output = new TextArea();
+//        TextArea output = new TextArea();
         root.add(output, 0, 1);
-        output.setDisable(true);
+        output.setEditable(false);
+        output.setWrapText(true);
+        output.setPrefColumnCount(38);
+
 
         // HBOX CONTAINER FOR SCALABILITY
         HBox textFieldBox = new HBox(inputNumber);
         textFieldBox.setAlignment(Pos.BASELINE_LEFT);
-        textFieldBox.setPadding(new Insets(0, 140,0,0 ));
+        textFieldBox.setPadding(new Insets(20, 140,0,20 ));
 
+        // TEXT AREA BOX POSITION
         HBox textAreaBox = new HBox(output);
         textAreaBox.setAlignment(Pos.BOTTOM_LEFT);
-        textAreaBox.setPadding(new Insets(0,0,0,0));
+        textAreaBox.setPadding(new Insets(20,0,30,20));
 
+        // ATTEMPTED TO CREATE A HBOX LEFT FOR TEXTFIELD AND TEXTAREA
+//        HBox hBoxLeft = new HBox();
+//        hBoxLeft.setSpacing(10);
+//        hBoxLeft.setPadding(new Insets(10));
+//        hBoxLeft.getChildren().addAll(inputNumber, output);
+
+        // COMBO BOX POSITION
         HBox comboBox = new HBox(options);
         comboBox.setAlignment(Pos.TOP_RIGHT);
         comboBox.setPadding(new Insets(0,0,0,0));
@@ -196,23 +242,23 @@ public class TwoWidgets extends Application {
         HBox.setHgrow(textAreaBox, Priority.ALWAYS);
         HBox.setHgrow(inputNumber, Priority.ALWAYS);
 
-        // RUN BUTTON
+        // RUN BUTTON ON ACTION
         Button checkNumber = new Button("Run");
         root.add(checkNumber, 3, 0);
         checkNumber.setOnAction(
                 event -> {
 
-                    checkEvenOrPrime(inputNumber, options);
+                    checkEvenOrPrime(inputNumber, options, output);
 
                 }
 
 
         );
 
+        // RUN BUTTON POSITION
         HBox buttonBox = new HBox(checkNumber);
         buttonBox.setAlignment(Pos.TOP_RIGHT);
         buttonBox.setPadding(new Insets(0,20,0,0));
-
 
         BorderPane pane = new BorderPane();
         pane.setTop(textFieldBox);
@@ -220,7 +266,7 @@ public class TwoWidgets extends Application {
         pane.setCenter(comboBox);
         pane.setRight(buttonBox);
 
-        primaryStage.setScene(new Scene(pane, 600, 400));
+        primaryStage.setScene(new Scene(pane, 700, 400));
         primaryStage.show();
 
 
