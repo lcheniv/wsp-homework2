@@ -266,7 +266,6 @@ public class TwoWidgets extends Application {
                     checkEvenOrPrime(inputNumber, options, output);
 
                 }
-
         );
 
         // ATTEMPTED TO CREATE A HBOX LEFT FOR TEXTFIELD AND TEXTAREA
